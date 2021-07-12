@@ -1,0 +1,6 @@
+galaxy_info:
+  role_name: backports
+  author: carbonique
+  description: Role setting up Debian/Ubuntu backports and installing packages
+  license: "license (MIT)"
+  min_ansible_version: 2.10

@@ -1,0 +1,32 @@
+---
+# Thanks to https://github.com/jnv/ansible-role-debian-backports
+- name: add distribution-specific variables
+  include_vars: "../defaults/{{ ansible_distribution }}.yml"
+
+- name: install additional packages
+  apt:
+    pkg: "{{ backports_internal_additional_packages }}"
+    state: present
+  when: backports_internal_additional_packages | length > 0
+
+- name: add backports repository
+  apt_repository:
+    repo: deb [arch={{ ansible_architecture }} ] {{ backports_internal_uri }} {{ backports_internal_components }}
+    state: present
+    update_cache: yes
+
+- name: pinning backports priority
+  template:
+    src: "001-ansible-role-backports.j2"
+    dest: "/etc/apt/preferences.d/001-ansible-role-backports"
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Install backport packages
+  apt:
+    pkg: "{{ backport_packages }}"
+    state: latest
+    default_release: "{{ ansible_distribution_release }}-backports"
+    update_cache: true
+  tags: install

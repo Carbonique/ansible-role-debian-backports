@@ -1,0 +1,7 @@
+Package: libseccomp2
+Pin: release a={{ ansible_distribution_release }}-backports
+Pin-Priority: 600
+
+Package: *
+Pin: release a={{ ansible_distribution_release }}-backports
+Pin-Priority: -1
