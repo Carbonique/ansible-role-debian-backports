@@ -25,4 +25,4 @@ For installation to the current directory:
 
 # Defaults & Variables
 
-Defaults have been prefilled, variables have to be filled by the user.
+See defaults directory
