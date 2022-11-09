@@ -11,7 +11,7 @@ This role adds Debian/Ubuntu backports and install apt packages from backports. 
 Add the following to `requirements.yml`:
 
 ```
-- src: git@gitlab.com:carbonique/ansible-role-debian-backports.git
+- src: https://github.com/carbonique/ansible-role-debian-backports.git
   scm: git
   name: debian-backports
   version: #Leave empty for latest. To download a specific version: use the tag as listed in repo
